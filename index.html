@@ -12,7 +12,7 @@
 
         var url = "http://api.giphy.com/v1/gifs/random?api_key=dc6zaTOxFJmzC&tag=";
         var cuteness = ["kittens", "puppies"];
-        var randomCutenessIndex = randomIntFromInterval(0,1);
+        var randomCutenessIndex = randomIntFromInterval(0,cuteness.length-1);
         var chosenCuteness = cuteness[randomCutenessIndex];
         var xhr = new XMLHttpRequest();
         xhr.onreadystatechange = function() {
@@ -41,7 +41,7 @@
 		* { margin: 0; padding: 0; }
 
 		body { 
-			background: url(null) no-repeat center center fixed; 
+			background: url(./poweredByGiphy.gif) no-repeat center center fixed; 
 			-webkit-background-size: cover;
 			-moz-background-size: cover;
 			-o-background-size: cover;
