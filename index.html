@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	
+	<title>aaaaaw cute!</title>
+	<script>
+        function randomIntFromInterval(min,max){
+            return Math.floor(Math.random()*(max-min+1)+min);
+        }
+
+        var url = "http://api.giphy.com/v1/gifs/random?api_key=dc6zaTOxFJmzC&tag=";
+        var cuteness = ["kittens", "puppies"];
+        var randomCutenessIndex = randomIntFromInterval(0,1);
+        var chosenCuteness = cuteness[randomCutenessIndex];
+        var xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState == XMLHttpRequest.DONE) {
+                var response = JSON.parse(xhr.responseText)
+                var cutePic = response.data.image_url;
+                document.body.style.backgroundImage = "url("+cutePic+")";
+                var element = document.getElementById("loading");
+                element.parentNode.removeChild(element);
+            }
+        }
+        xhr.open('GET', url+chosenCuteness, true);
+        xhr.send(null);
+    </script> 
+	<style>
+		* { margin: 0; padding: 0; }
+		
+		body { 
+			background: url(null) no-repeat center center fixed; 
+			-webkit-background-size: cover;
+			-moz-background-size: cover;
+			-o-background-size: cover;
+			background-size: cover;
+		}
+		
+	</style>
+</head>
+
+<body>
+
+    <div id="loading">Loading cuteness...</div>
+
+</body>
+
+</html>
